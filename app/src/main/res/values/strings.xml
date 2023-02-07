@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Kevin_Ross_Martinez_DINOCO</string>
+
+    <string name="hint_nombre">Ingrese nombre:</string>
+    <string name="hint_planta">Planta Petrolera,:</string>
+    <string name="hint_cantidad">Cantidad de Barriles</string>
+
+    <string name="hint_nuevo">Ingresar Nuevo Registro</string>
+
 </resources>
