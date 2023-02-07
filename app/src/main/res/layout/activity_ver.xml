@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +18,7 @@
             android:id="@+id/viewNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_nombre" />
+            android:text="@string/ic_nombre" />
 
         <EditText
             android:id="@+id/txtNombre"
@@ -32,7 +33,7 @@
             android:id="@+id/viewPlanta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ic_contacto" />
+            android:text="@string/ic_planta" />
 
         <EditText
             android:id="@+id/txtPlanta"
@@ -45,7 +46,7 @@
             android:id="@+id/viewCantidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ic_contacto" />
+            android:text="@string/ic_cantidad" />
 
         <EditText
             android:id="@+id/txtCantidad"
@@ -58,7 +59,7 @@
             android:id="@+id/viewFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ic_contacto" />
+            android:text="@string/ic_fecha" />
 
         <EditText
             android:id="@+id/txtFecha"
@@ -72,23 +73,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/ic_contacto" />
+            android:backgroundTint="#4CAF50"
+            android:text="Guardar Registros" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        <Button
             android:id="@+id/fabEditar"
-            android:layout_width="match_parent"
+            android:layout_width="192dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:clickable="true"
-            android:text="@string/ic_contacto" />
+            android:layout_gravity="center"
+            android:text="Editar Registro"
+            app:backgroundTint="#00BCD4"
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            />
+
+
+        <Button
             android:id="@+id/fabEliminar"
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:clickable="true"
-            android:text="@string/ic_contacto" />
+            android:layout_gravity="center"
+            android:text="Eliminar Registro"
+            app:backgroundTint="#E91E63" />
 
     </LinearLayout>
     <!--

@@ -82,11 +82,10 @@ public class DbProductos extends DbHelper {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         Productos productos = null;
-        Cursor cursorProductos = null;
+        Cursor cursorProductos;
 
         // se genera consulta a la base de datos devolviendo una respuesta de tipo cursor
         cursorProductos = db.rawQuery(" SELECT * FROM " + TABLE_PRODUCTOS + " WHERE id = " + id + " LIMIT 1 ", null);
-        // validacion
         if (cursorProductos.moveToFirst()) {
             productos = new Productos();
             productos.setId(cursorProductos.getInt(0));
@@ -108,7 +107,7 @@ public class DbProductos extends DbHelper {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE " + TABLE_PRODUCTOS + " SET nombre = '" + nombre + "', planta = '" + planta + "', cantidad = '" + cantidad + "', fecha = '" + fecha + "' WHERE id='" + id + "' ");
+            db.execSQL(" UPDATE " + TABLE_PRODUCTOS + " SET nombre = '" + nombre + "', planta = '" + planta + "', cantidad = '" + cantidad + "', fecha = '" + fecha + "' WHERE id='" + id + "' ");
             ok = true;
         } catch (Exception ex) {
             ex.toString();

@@ -2,6 +2,7 @@ package com.iacc.kevin_ross_martinez_dinoco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -16,7 +17,7 @@ public class VerActivity extends AppCompatActivity {
     EditText txtNombre,txtPlanta,txtCantidad,txtFecha;
     Button btnGuarda;
     Productos producto;
-    FloatingActionButton fabEditar, fabEliminar;
+    Button fabEditar, fabEliminar;
 
     int id = 0;
 
@@ -32,6 +33,7 @@ public class VerActivity extends AppCompatActivity {
 
         fabEditar = findViewById(R.id.fabEditar);
         fabEliminar = findViewById(R.id.fabEliminar);
+
         btnGuarda = findViewById(R.id.btnGuarda);
         btnGuarda.setVisibility(View.INVISIBLE);
 
@@ -63,5 +65,13 @@ public class VerActivity extends AppCompatActivity {
             txtFecha.setInputType(InputType.TYPE_NULL);
 
         }
+        fabEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VerActivity.this, EditarActivity.class);
+                intent.putExtra("ID",id);
+                startActivity(intent);
+            }
+        });
     }
 }

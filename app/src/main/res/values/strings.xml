@@ -10,7 +10,18 @@
     <string name="hint_lista_precios">Producción de las plantas petroleras </string>
 
 
-    <string name="ic_contacto">Producción de las plantas petroleras </string>
+    <string name="ic_nombre">Nombre :</string>
+    <string name="ic_planta">Planta :</string>
+    <string name="ic_cantidad">Cantidad :</string>
+    <string name="ic_fecha">Fecha</string>
+
+    <string name="ic_guardar">Guardar</string>
+
+    <string name="ic_editar">Guardar</string>
+    <string name="ic_eliminar">Guardar</string>
+
+
+
 
 
 </resources>

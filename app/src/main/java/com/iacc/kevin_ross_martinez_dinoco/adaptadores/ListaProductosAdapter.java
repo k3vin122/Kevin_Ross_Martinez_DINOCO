@@ -54,15 +54,15 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
 
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
-            viewNombre = itemView.findViewById(R.id.viewNombre);
 
+            viewNombre = itemView.findViewById(R.id.viewNombre);
             viewPlanta = itemView.findViewById(R.id.viewPlanta);
             viewCantidad = itemView.findViewById(R.id.viewCantidad);
             ViewFecha = itemView.findViewById(R.id.viewFecha);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
+                public void onClick(View view) {
+                    Context context = view.getContext();
                     Intent intent = new Intent(context, VerActivity.class);
                     intent.putExtra("ID", listaProductos.get(getAdapterPosition()).getId());
                     context.startActivity(intent);

@@ -1,10 +1,12 @@
 package com.iacc.kevin_ross_martinez_dinoco;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +18,8 @@ public class EditarActivity extends AppCompatActivity {
     EditText txtNombre, txtPlanta, txtCantidad, txtFecha;
     Button btnGuarda;
     Productos producto;
-    FloatingActionButton fabEditar, fabEliminar;
+    Button fabEditar, fabEliminar;
+    boolean x1 = false;
 
     int id = 0;
 
@@ -33,7 +36,7 @@ public class EditarActivity extends AppCompatActivity {
         fabEditar = findViewById(R.id.fabEditar);
         fabEliminar = findViewById(R.id.fabEliminar);
         btnGuarda = findViewById(R.id.btnGuarda);
-        btnGuarda.setVisibility(View.INVISIBLE);
+        //btnGuarda.setVisibility(View.INVISIBLE);
 
 
         if (savedInstanceState == null) {
@@ -55,15 +58,32 @@ public class EditarActivity extends AppCompatActivity {
             txtCantidad.setText(producto.getCantidad());
             txtFecha.setText(producto.getFecha());
         }
+
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                if (!txtNombre.getText().toString().equals("") && !txtPlanta.getText().toString().equals("")) {
+                    x1 = dbProductos.editarProducto(id, txtNombre.getText().toString(), txtPlanta.getText().toString(), txtCantidad.getText().toString(), txtFecha.getText().toString());
 
+                    if (x1) {
+                        Toast.makeText(EditarActivity.this, "REGISTRO MODIFICADO", Toast.LENGTH_LONG).show();
+                        verRegistro();
+                    } else {
+                        Toast.makeText(EditarActivity.this, "ERROR AL MODIFICAR REGISTRO", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(EditarActivity.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
+                }
             }
-
         });
     }
-}
-//https://www.youtube.com/watch?v=JLvRRJkEmE8&ab_channel=C%C3%B3digosdeProgramaci%C3%B3n-MR
 
-//https://github.com/CodigosdeProgramacion/Agenda/blob/main/app/src/main/java/com/cdp/agenda/EditarActivity.java
+    private void verRegistro() {
+        Intent intent = new Intent(this, VerActivity.class);
+        intent.putExtra("ID", id);
+        startActivity(intent);
+    }
+}
+
+
+
