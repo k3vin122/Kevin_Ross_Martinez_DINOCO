@@ -1,6 +1,8 @@
 package com.iacc.kevin_ross_martinez_dinoco;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,30 +14,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.iacc.kevin_ross_martinez_dinoco.adaptadores.ListaProductosAdapter;
 import com.iacc.kevin_ross_martinez_dinoco.db.DbHelper;
+import com.iacc.kevin_ross_martinez_dinoco.db.DbProductos;
+import com.iacc.kevin_ross_martinez_dinoco.entidades.Productos;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnCrear;
+    RecyclerView listaProductos;
+    ArrayList<Productos> listarArrayProductos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCrear = findViewById(R.id.btnCrear);
-        btnCrear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DbHelper dbHelper = new DbHelper(MainActivity.this);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if (db != null) {
+        listaProductos = findViewById(R.id.listaProductos);
 
-                    Toast.makeText(MainActivity.this, "Base de datos creada con exito", Toast.LENGTH_LONG).show();
-                } else {
+        listaProductos.setLayoutManager(new LinearLayoutManager(this));
+        DbProductos dbProductos = new DbProductos(MainActivity.this);
+        listarArrayProductos = new ArrayList<>();
+        ListaProductosAdapter adapter = new ListaProductosAdapter(dbProductos.leerContactos());
+        listaProductos.setAdapter(adapter);
 
-                    Toast.makeText(MainActivity.this, "Ups! Algo salio mal", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 
     // METODO MOSTRA MENU
