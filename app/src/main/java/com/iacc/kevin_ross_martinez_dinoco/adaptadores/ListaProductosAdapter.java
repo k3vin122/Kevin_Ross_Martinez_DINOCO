@@ -1,5 +1,7 @@
 package com.iacc.kevin_ross_martinez_dinoco.adaptadores;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iacc.kevin_ross_martinez_dinoco.R;
+import com.iacc.kevin_ross_martinez_dinoco.VerActivity;
 import com.iacc.kevin_ross_martinez_dinoco.entidades.Productos;
 
 import java.util.ArrayList;
@@ -54,9 +57,17 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
             viewNombre = itemView.findViewById(R.id.viewNombre);
 
             viewPlanta = itemView.findViewById(R.id.viewPlanta);
-            viewCantidad = itemView.findViewById(R.id.ViewCantidad);
+            viewCantidad = itemView.findViewById(R.id.viewCantidad);
             ViewFecha = itemView.findViewById(R.id.viewFecha);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, VerActivity.class);
+                    intent.putExtra("ID", listaProductos.get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
+                }
+            });
 
 
         }

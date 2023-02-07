@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaProductos.setLayoutManager(new LinearLayoutManager(this));
         DbProductos dbProductos = new DbProductos(MainActivity.this);
+
         listarArrayProductos = new ArrayList<>();
         ListaProductosAdapter adapter = new ListaProductosAdapter(dbProductos.leerContactos());
         listaProductos.setAdapter(adapter);

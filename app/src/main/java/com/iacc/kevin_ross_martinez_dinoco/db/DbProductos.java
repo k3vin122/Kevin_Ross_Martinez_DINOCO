@@ -76,4 +76,47 @@ public class DbProductos extends DbHelper {
     }
 
 
+    public Productos verProducto(int id) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Productos productos = null;
+        Cursor cursorProductos = null;
+
+        // se genera consulta a la base de datos devolviendo una respuesta de tipo cursor
+        cursorProductos = db.rawQuery(" SELECT * FROM " + TABLE_PRODUCTOS + " WHERE id = " + id + " LIMIT 1 ", null);
+        // validacion
+        if (cursorProductos.moveToFirst()) {
+            productos = new Productos();
+            productos.setId(cursorProductos.getInt(0));
+            productos.setNombre(cursorProductos.getString(1));
+            productos.setPlanta(cursorProductos.getString(2));
+            productos.setCantidad(cursorProductos.getString(3));
+            productos.setFecha(cursorProductos.getString(4));
+
+        }
+        cursorProductos.close();
+        return productos;
+    }
+
+    //Metodo editra producto
+    public boolean editarProducto(int id, String nombre, String planta, String cantidad, String fecha) {
+        Boolean ok = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE " + TABLE_PRODUCTOS + " SET nombre = '" + nombre + "', planta = '" + planta + "', cantidad = '" + cantidad + "', fecha = '" + fecha + "' WHERE id='" + id + "' ");
+            ok = true;
+        } catch (Exception ex) {
+            ex.toString();
+            ok = false;
+        } finally {
+            db.close();
+        }
+
+        return ok;
+    }
 }
