@@ -29,7 +29,7 @@ public class DbProductos extends DbHelper {
             values.put("planta", planta);
             values.put("cantidad", cantidad);
             values.put("fecha", fecha);
-            db.insert(TABLE_PRODUCTOS, null, values);
+          id = db.insert(TABLE_PRODUCTOS, null, values);
 
         } catch (Exception ex) {
             ex.toString();
