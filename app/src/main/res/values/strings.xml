@@ -1,18 +1,17 @@
 <resources>
     <string name="app_name">Kevin_Ross_Martinez_DINOCO</string>
 
-    <string name="hint_nombre">Ingrese nombre:</string>
-    <string name="hint_planta">Planta Petrolera:</string>
-    <string name="hint_cantidad">Cantidad de Barriles</string>
-
+    <string name="hint_nombre">Nombre Planta Petrolera</string>
+    <string name="hint_planta">Ubicación</string>
+    <string name="hint_cantidad">Cantidad Barriles</string>
     <string name="hint_nuevo">Ingresar Nuevo Registro</string>
-
     <string name="hint_lista_precios">Producción de las plantas petroleras </string>
 
 
-    <string name="ic_nombre">Nombre :</string>
-    <string name="ic_planta">Planta :</string>
-    <string name="ic_cantidad">Cantidad :</string>
+
+    <string name="ic_nombre">Nombre Planta</string>
+    <string name="ic_planta">Ubicacion :</string>
+    <string name="ic_cantidad">Cantidad Barriles :</string>
     <string name="ic_fecha">Fecha</string>
 
     <string name="ic_guardar">Guardar</string>
