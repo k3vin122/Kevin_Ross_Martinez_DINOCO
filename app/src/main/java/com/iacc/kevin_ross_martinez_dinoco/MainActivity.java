@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView listaProductos;
     ArrayList<Productos> listarArrayProductos;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         listarArrayProductos = new ArrayList<>();
         ListaProductosAdapter adapter = new ListaProductosAdapter(dbProductos.leerContactos());
         listaProductos.setAdapter(adapter);
-
     }
+
+
 
     // METODO MOSTRA MENU
     public boolean onCreateOptionsMenu(Menu menu) {

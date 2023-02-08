@@ -2,6 +2,8 @@ package com.iacc.kevin_ross_martinez_dinoco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -14,7 +16,7 @@ import com.iacc.kevin_ross_martinez_dinoco.db.DbProductos;
 import com.iacc.kevin_ross_martinez_dinoco.entidades.Productos;
 
 public class VerActivity extends AppCompatActivity {
-    EditText txtNombre,txtPlanta,txtCantidad,txtFecha;
+    EditText txtNombre, txtPlanta, txtCantidad, txtFecha;
     Button btnGuarda;
     Productos producto;
     Button fabEditar, fabEliminar;
@@ -38,9 +40,9 @@ public class VerActivity extends AppCompatActivity {
         btnGuarda.setVisibility(View.INVISIBLE);
 
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null){
+            if (extras == null) {
                 id = Integer.parseInt(null);
             } else {
                 id = extras.getInt("ID");
@@ -49,9 +51,9 @@ public class VerActivity extends AppCompatActivity {
             id = (int) savedInstanceState.getSerializable("ID");
         }
         DbProductos dbProductos = new DbProductos(VerActivity.this);
-        producto=dbProductos.verProducto(id);
+        producto = dbProductos.verProducto(id);
 
-        if(producto != null){
+        if (producto != null) {
             txtNombre.setText(producto.getNombre());
             txtPlanta.setText(producto.getPlanta());
             txtCantidad.setText(producto.getCantidad());
@@ -69,9 +71,40 @@ public class VerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(VerActivity.this, EditarActivity.class);
-                intent.putExtra("ID",id);
+                intent.putExtra("ID", id);
                 startActivity(intent);
             }
         });
+
+        fabEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(VerActivity.this);
+                builder.setMessage("¿Este Registro se eliminara?")
+                    .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //metodo eliminar  de DbProductos
+
+                            if (dbProductos.eliminarContacto(id)) {
+                                lista_redirec();
+                            }
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    }).show();
+
+
+            }
+        });
+    }
+
+    private void lista_redirec() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

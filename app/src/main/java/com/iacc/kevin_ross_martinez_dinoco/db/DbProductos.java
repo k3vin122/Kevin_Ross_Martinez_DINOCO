@@ -118,4 +118,24 @@ public class DbProductos extends DbHelper {
 
         return ok;
     }
+
+    public boolean eliminarContacto(int id) {
+
+        boolean X2 = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("DELETE FROM " + TABLE_PRODUCTOS + " WHERE id = '" + id + "'");
+            X2 = true;
+        } catch (Exception ex) {
+            ex.toString();
+            X2 = false;
+        } finally {
+            db.close();
+        }
+
+        return X2;
+    }
 }

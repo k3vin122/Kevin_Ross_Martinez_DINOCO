@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listaProductos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listaProductos"
+            android:layout_width="406dp"
+            android:layout_height="758dp"
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="-2dp" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

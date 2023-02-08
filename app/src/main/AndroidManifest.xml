@@ -33,11 +33,11 @@
         <activity
             android:name=".CreateActivity"
             android:exported="false"
-            android:parentActivityName=".CreateActivity" />
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".CreateActivity" />
+            android:value=".MainActivity" />
 
         <activity
             android:name=".MainActivity"

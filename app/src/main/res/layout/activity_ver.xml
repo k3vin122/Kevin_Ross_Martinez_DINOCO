@@ -94,7 +94,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Eliminar Registro"
-            app:backgroundTint="#E91E63" />
+            app:backgroundTint="#E91E63"
+            app:srcCompat="@drawable/archivo"
+            tools:srcCompat="@drawable/archivo"
+            />
+
 
     </LinearLayout>
     <!--
